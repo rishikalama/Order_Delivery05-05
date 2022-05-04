@@ -10,9 +10,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.order_delivery.customer_activities.MenuActivity;
+import com.example.order_delivery.local_model.CurrentEmployeeInfo;
+import com.example.order_delivery.local_model.CurrentUserInfo;
+import com.example.order_delivery.manager_activities.Manager;
+import com.example.order_delivery.model.Employee;
+import com.example.order_delivery.model.sz_customer;
+import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
@@ -21,16 +28,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+    private String username;
+    private String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if (ParseUser.getCurrentUser() != null) {
-            goMainActivity(ParseUser.getCurrentUser().getString("type"));
-        }
-
+//        if (ParseUser.getCurrentUser() != null) {
+//            goMainActivity(ParseUser.getCurrentUser().getString("type"));
+//        }
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -38,8 +46,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick login button");
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
+                username = etUsername.getText().toString();
+                password = etPassword.getText().toString();
                 loginUser(username, password);
             }
         });
@@ -58,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 //TODO: navigate to the main activity if the user has signed in properly
                 String type = user.getString("type");
-                System.out.println(type);
                 goMainActivity(type);
                 Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT);
             }
@@ -70,22 +77,64 @@ public class LoginActivity extends AppCompatActivity {
         Intent i;
         switch (type) {
             case "customer":
+                //initialize customer then go to main activity
+                //initialize current user
+                //I can create general method for this, but rn just leave it
+                ParseQuery<sz_customer> query = ParseQuery.getQuery(sz_customer.class);
+                query.whereEqualTo("username", username);
+                query.getFirstInBackground(new GetCallback<sz_customer>() {
+                    @Override
+                    public void done(sz_customer object, ParseException e) {
+                        if (e != null){
+                            Log.e(TAG, "Issue with getting current user", e);
+                            return;
+                        }
+                        CurrentUserInfo currentUserInfo = new CurrentUserInfo (object);
+                    }
+                });
+                //add warning check
                 i = new Intent(this, MenuActivity.class);
                 startActivity(i);
                 break;
             case "chef":
+                ParseQuery<Employee> query2 = ParseQuery.getQuery(Employee.class);
+                query2.whereEqualTo("username", username);
+                query2.getFirstInBackground(new GetCallback<Employee>() {
+                    @Override
+                    public void done(Employee object, ParseException e) {
+                        if (e != null){
+                            Log.e(TAG, "Issue with getting current user", e);
+                            return;
+                        }
+                        System.out.println(object.getName());
+                        CurrentEmployeeInfo currentEmployeeInfo = new CurrentEmployeeInfo (object);
+                    }
+                });
                 i = new Intent(this, ChefActivity.class);
                 startActivity(i);
                 break;
             case "delivery":
+                ParseQuery<Employee> query3 = ParseQuery.getQuery(Employee.class);
+                query3.whereEqualTo("username", username);
+                query3.getFirstInBackground(new GetCallback<Employee>() {
+                    @Override
+                    public void done(Employee object, ParseException e) {
+                        if (e != null){
+                            Log.e(TAG, "Issue with getting current user", e);
+                            return;
+                        }
+                        CurrentEmployeeInfo currentEmployeeInfo = new CurrentEmployeeInfo (object);
+                    }
+                });
                 i = new Intent(this, DeliveryActivity.class);
                 startActivity(i);
                 break;
             case "manager":
-                i = new Intent(this, ManagerActivity.class);
+                i = new Intent(this, Manager.class);
                 startActivity(i);
                 break;
         }
         finish();
     }
+
 }

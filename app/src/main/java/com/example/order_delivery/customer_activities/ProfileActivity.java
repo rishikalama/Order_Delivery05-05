@@ -1,4 +1,4 @@
-package com.example.order_delivery;
+package com.example.order_delivery.customer_activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.order_delivery.R;
+import com.example.order_delivery.customer_activities.WalletActivity;
+import com.example.order_delivery.local_model.CurrentUserInfo;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -56,7 +60,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
     public void onProfileBackMenuClick(View view) {
         finish();
     }

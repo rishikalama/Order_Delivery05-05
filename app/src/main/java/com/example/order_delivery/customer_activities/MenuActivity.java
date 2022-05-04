@@ -1,4 +1,4 @@
-package com.example.order_delivery;
+package com.example.order_delivery.customer_activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.order_delivery.R;
+import com.example.order_delivery.adapters.sz_item_custAdapter;
+import com.example.order_delivery.customer_activities.CheckOut;
+import com.example.order_delivery.customer_activities.ProfileActivity;
+import com.example.order_delivery.local_model.CurrentUserInfo;
+import com.example.order_delivery.model.sz_item_cust;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
@@ -33,21 +37,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        //initialize current user
-        //do not initialize customer here
-        ParseQuery<sz_customer> query = ParseQuery.getQuery(sz_customer.class);
-        query.whereEqualTo("objectId", "FyPuotV3Nm");
-        query.getFirstInBackground(new GetCallback<sz_customer>() {
-            @Override
-            public void done(sz_customer object, ParseException e) {
-                if (e != null){
-                    Log.e(TAG, "Issue with getting current user", e);
-                    return;
-                }
-                CurrentUserInfo currentUserInfo = new CurrentUserInfo (object);
-            }
-        });
-        //this is a test
+        System.out.println(CurrentUserInfo.currentUserName);
 
         rvMenu = findViewById(R.id.rvMenu);
         all_item = new ArrayList<>();
@@ -86,6 +76,7 @@ public class MenuActivity extends AppCompatActivity {
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
     }
+
 //    public void refreshView() {
 //        countDownTimer = new CountDownTimer(30000, 1000) {
 //            @Override

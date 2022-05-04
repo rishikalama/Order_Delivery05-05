@@ -1,20 +1,19 @@
-package com.example.order_delivery;
+package com.example.order_delivery.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.parse.ParseFile;
+import com.example.order_delivery.R;
+import com.example.order_delivery.local_model.CartItem;
 
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class checkOutAdapter extends RecyclerView.Adapter<checkOutAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.cart_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -46,28 +45,25 @@ public class checkOutAdapter extends RecyclerView.Adapter<checkOutAdapter.ViewHo
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView ivItem;
-        private TextView tvItemName;
-        private TextView tvDescription;
-        private TextView tvPrice;
-        private TextView tvRating;
-        private RelativeLayout itemContainer;
+        private ImageView ivCartItem;
+        private TextView tvCartName;
+        private TextView tvCartPrice;
+        private TextView tvCartQuantity;
+        private RelativeLayout CartContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivItem = itemView.findViewById(R.id.ivItem);
-            tvItemName = itemView.findViewById(R.id.tvItemName);
-            tvDescription = itemView.findViewById(R.id.tvDescription);
-            tvPrice = itemView.findViewById(R.id.tvPrice);
-            tvRating = itemView.findViewById(R.id.tvRating);
+            ivCartItem = itemView.findViewById(R.id.ivCartItem);
+            tvCartName = itemView.findViewById(R.id.tvCartName);
+            tvCartPrice = itemView.findViewById(R.id.tvCartPrice);
+            tvCartQuantity = itemView.findViewById(R.id.tvCartQuantity);
         }
 
         public void bind(CartItem item) {
-            tvItemName.setText(item.getName());
-            tvDescription.setText("");
-            tvPrice.setText("$" + item.getPrice());
-            tvRating.setText("");
-            Glide.with(context).load(item.getImageUrl()).into(ivItem);
+            tvCartName.setText(item.getName());
+            tvCartPrice.setText("$ " + item.getPrice());
+            tvCartQuantity.setText("Quantity: " + item.getQuantity());
+            Glide.with(context).load(item.getImageUrl()).into(ivCartItem);
         }
     }
 

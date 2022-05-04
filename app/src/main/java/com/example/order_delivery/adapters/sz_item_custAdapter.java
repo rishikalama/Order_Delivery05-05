@@ -1,11 +1,11 @@
-package com.example.order_delivery;
+package com.example.order_delivery.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,11 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.parse.DeleteCallback;
-import com.parse.FindCallback;
-import com.parse.ParseException;
+import com.example.order_delivery.customer_activities.CommentActivity;
+import com.example.order_delivery.customer_activities.DetailActivity;
+import com.example.order_delivery.R;
+import com.example.order_delivery.model.sz_item_cust;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -56,6 +58,7 @@ public class sz_item_custAdapter extends RecyclerView.Adapter<sz_item_custAdapte
         private TextView tvDescription;
         private TextView tvPrice;
         private TextView tvRating;
+        private Button btnComment;
         private RelativeLayout itemContainer;
 
         public ViewHolder(@NonNull View itemView) {
@@ -65,7 +68,17 @@ public class sz_item_custAdapter extends RecyclerView.Adapter<sz_item_custAdapte
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvRating = itemView.findViewById(R.id.tvRating);
+            btnComment = itemView.findViewById(R.id.btnItemComment);
             itemContainer = itemView.findViewById(R.id.itemContainer);
+
+            btnComment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, CommentActivity.class);
+                    intent.putExtra("itemName", tvItemName.getText().toString());
+                    context.startActivity(intent);
+                }
+            });
         }
 
 
@@ -84,17 +97,13 @@ public class sz_item_custAdapter extends RecyclerView.Adapter<sz_item_custAdapte
                 public void onClick(View view) {
                     Toast.makeText(context, "Item clicked in adapter", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(context, DetailActivity.class);
-                    i.putExtra("itemName", item.getItemName());
-                    i.putExtra("itemDesc", item.getItemDescription());
-                    i.putExtra("itemPrice", item.getItemPrice());
-                    i.putExtra("itemImageURL", item.getItemImage().getUrl());
-                    i.putExtra("itemObjectId", item.getObjectId());
+                    i.putExtra("test", Parcels.wrap(item));
                     context.startActivity(i);
 //                    System.out.println(getAdapterPosition());
 //                    item.deleteInBackground(); //delete item on server
 //                    item_cust.remove(getAdapterPosition()); //delete locally on recycler list
 
-                    notifyDataSetChanged(); //update recycler view
+//                    notifyDataSetChanged(); //update recycler view
                 }
             });
         }

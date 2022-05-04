@@ -1,5 +1,8 @@
-package com.example.order_delivery;
+package com.example.order_delivery.local_model;
 
+import com.example.order_delivery.model.sz_customer;
+
+//this needs to be updated
 public class CurrentUserInfo {
     public static sz_customer currentUser;
     public static String currentUserId;

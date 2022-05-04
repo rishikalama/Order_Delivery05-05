@@ -12,9 +12,40 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Order_Delivery">
+        android:theme="@style/Theme.Order_Delivery"
+        android:windowSoftInputMode="stateHidden|adjustResize|adjustNothing">
+        <activity
+            android:name=".delivery_activities.CurrentDelivery"
+            android:exported="false" />
+        <activity
+            android:name=".delivery_activities.DeliveryBid"
+            android:exported="false" />
+        <activity
+            android:name=".manager_activities.Manager"
+            android:exported="false" />
+        <activity
+            android:name=".delivery_activities.JustificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".manager_activities.BidActivity"
+            android:exported="false" />
+        <activity
+            android:name=".manager_activities.OrderList"
+            android:exported="false" />
+        <activity
+            android:name=".manager_activities.CustList"
+            android:exported="false" />
+        <activity
+            android:name=".manager_activities.EmployList"
+            android:exported="false" />
+        <activity
+            android:name=".customer_activities.AddCommentActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customer_activities.WalletActivity"
             android:exported="false" />
         <activity
             android:name=".DeliveryActivity"
@@ -26,22 +57,22 @@
             android:name=".ChefActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".customer_activities.CommentActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".customer_activities.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".WalletActivity"
+            android:name=".customer_activities.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".AddressActivity"
+            android:name=".customer_activities.AddressActivity"
             android:exported="false" />
         <activity
-            android:name=".CheckOut"
+            android:name=".customer_activities.CheckOut"
             android:exported="false" />
         <activity
-            android:name=".DetailActivity"
+            android:name=".customer_activities.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".SignupActivity"

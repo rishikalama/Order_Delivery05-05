@@ -1,28 +1,32 @@
-package com.example.order_delivery;
+package com.example.order_delivery.local_model;
 
 
+import com.parse.Parse;
+import com.parse.ParseFile;
+
+import java.io.File;
 
 public class CartItem {
-    private String quantity;
+    private int quantity;
     private String name;
     private String imageUrl;
-    private String price;
+    private double price;
 
     public CartItem(){
-        quantity = null;
+        quantity = 0;
         name = null;
         imageUrl = null;
-        price = null;
+        price = 0;
     }
 
-    public void setField(String name, String quantity, String imageUrl, String price){
+    public void setField(String name, int quantity, String imageUrl, double price){
         this.name = name;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
         this.price = price;
     }
 
-    public String getQuantity(){
+    public int getQuantity(){
         return this.quantity;
     }
 
@@ -33,7 +37,7 @@ public class CartItem {
     public String getImageUrl(){
         return this.imageUrl;
     }
-    public String getPrice(){
+    public double getPrice(){
         return this.price;
     }
 }

@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
+import com.example.order_delivery.model.sz_customer;
 import com.parse.SignUpCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -19,12 +19,13 @@ public class SignupActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnSave;
+    private sz_customer newCustomer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_signup );
-
+        newCustomer = new sz_customer();
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnSave=findViewById (R.id.btnSave);
@@ -54,7 +55,13 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
                 ParseUser.logOut();
-                ParseUser.getCurrentUser ( );
+                ParseUser.getCurrentUser();
+                //set up customer table
+                //remember to fix this part
+                newCustomer.put("username", username);
+                newCustomer.put("name", username);
+                newCustomer.put("userId", user.getObjectId());
+                newCustomer.saveInBackground();
                 goLoginActivity();
                 Toast.makeText(SignupActivity.this, "User signed up with success!", Toast.LENGTH_SHORT).show();
 

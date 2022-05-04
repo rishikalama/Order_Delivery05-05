@@ -1,18 +1,19 @@
-package com.example.order_delivery;
+package com.example.order_delivery.customer_activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.order_delivery.R;
+import com.example.order_delivery.local_model.CartItem;
+import com.example.order_delivery.model.sz_item_cust;
 
-import java.util.ArrayList;
+import org.parceler.Parcels;
 
 public class DetailActivity extends AppCompatActivity {
     private int count = 0;
@@ -21,11 +22,8 @@ public class DetailActivity extends AppCompatActivity {
     private TextView tvItemDescDetail;
     private TextView tvPriceDetail;
     private ImageView ivImageDetail;
-    private String itemObjectId;
-    private String itemName;
-    private String itemPrice;
-    private String itemImageURL;
-    private CartItem thisItem = new CartItem();
+    private sz_item_cust itemTest = new sz_item_cust();
+    private CartItem thisItem;
 
 
 
@@ -38,21 +36,23 @@ public class DetailActivity extends AppCompatActivity {
         tvItemDescDetail = findViewById(R.id.tvItemDescDetail);
         tvPriceDetail = findViewById(R.id.tvPriceDetail);
         ivImageDetail = findViewById(R.id.ivItemDetail);
-        itemName = getIntent().getStringExtra("itemName");
-        String itemDesc = getIntent().getStringExtra("itemDesc");
-        itemPrice = getIntent().getStringExtra("itemPrice");
-        itemImageURL = getIntent().getStringExtra("itemImageURL");
-        itemObjectId = getIntent().getStringExtra("itemObjectId");
+
         //the following code sets the require field
-        tvItemNameDetail.setText(itemName);
-        tvItemDescDetail.setText(itemDesc);
-        tvPriceDetail.setText("$" + itemPrice);
-        Glide.with(this).load(itemImageURL).into(ivImageDetail);
+        //this works
+        itemTest = Parcels.unwrap(getIntent().getParcelableExtra("test"));
+//        thisItem = (CartItem) itemTest;
+        System.out.println(itemTest.getItemName());
+        tvItemNameDetail.setText(itemTest.getItemName());
+        tvItemDescDetail.setText(itemTest.getItemDescription());
+        tvPriceDetail.setText("$" + itemTest.getItemPrice());
+        Glide.with(this).load(itemTest.getItemImage().getUrl()).into(ivImageDetail);
+
 
     }
 
     public void onAddCartClick(View view) {
-        thisItem.setField(itemName, Integer.toString(count), itemImageURL, itemPrice);
+        thisItem = new CartItem();
+        thisItem.setField(itemTest.getItemName(), count, itemTest.getItemImage().getUrl(), Double.parseDouble(itemTest.getItemPrice()));
         //when this is click, update
         if (count > 0){
             CheckOut.cartItemList.add(thisItem);

@@ -4,42 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeliveryActivity">
+    tools:context=".customer_activities.AddCommentActivity">
 
-    <Button
-        android:id="@+id/btnDeliveryItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onCurrentDeliveryItemClick"
-        android:text="current item"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+    <EditText
+        android:id="@+id/etComments"
+        android:layout_width="354dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:hint="Please enter comment"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnDeliveryBid"
+    <RatingBar
+        android:id="@+id/rbRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onDeliveryBidClick"
-        android:text="Bid"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:stepSize="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.361" />
+        app:layout_constraintTop_toBottomOf="@+id/etComments" />
 
     <Button
-        android:id="@+id/btnDeliveryComplaint"
+        android:id="@+id/btnSubmitComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="complaint"
+        android:layout_marginTop="72dp"
+        android:onClick="onSubmitCommentClick"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbRating" />
+
+    <Button
+        android:id="@+id/btnAddCommentBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="216dp"
+        android:onClick="onAddCommentBackClick"
+        android:text="back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.655" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmitComment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
