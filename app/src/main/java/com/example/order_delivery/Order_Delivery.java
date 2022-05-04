@@ -7,6 +7,7 @@ import com.example.order_delivery.model.CheckoutList;
 import com.example.order_delivery.model.Comments;
 import com.example.order_delivery.model.CompleteOrder;
 import com.example.order_delivery.model.Employee;
+import com.example.order_delivery.model.Notification;
 import com.example.order_delivery.model.sz_customer;
 import com.example.order_delivery.model.sz_item_cust;
 import com.parse.Parse;
@@ -22,6 +23,7 @@ public class Order_Delivery extends Application {
         ParseObject.registerSubclass(sz_customer.class);
         ParseObject.registerSubclass(Comments.class);
         ParseObject.registerSubclass(Employee.class);
+        ParseObject.registerSubclass(Notification.class);
 
         ParseObject.registerSubclass(CompleteOrder.class);
         ParseObject.registerSubclass(Bid.class);

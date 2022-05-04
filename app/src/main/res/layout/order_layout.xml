@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/OrderItemContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvOrderCustName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Username" />
+
+    <TextView
+        android:id="@+id/tvOrderCustAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address" />
+
+    <TextView
+        android:id="@+id/tvOrderList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List" />
+
+    <TextView
+        android:id="@+id/tvOrderPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="total cost" />
+
+    <TextView
+        android:id="@+id/tvAssignTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assigned To + Reasoning:" />
+</LinearLayout>

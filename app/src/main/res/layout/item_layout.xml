@@ -67,16 +67,14 @@
         android:layout_toEndOf="@+id/ivItem"
         android:text="name" />
 
-    <Button
-        android:id="@+id/btnItemComment"
-        android:layout_width="147dp"
+    <ImageButton
+        android:id="@+id/ibComment"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvRating"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="259dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="5dp"
-        android:text="comment" />
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="9dp"
+        app:srcCompat="@drawable/ic_baseline_comment_24" />
 
 </RelativeLayout>

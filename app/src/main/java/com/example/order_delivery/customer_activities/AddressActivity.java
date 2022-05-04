@@ -21,7 +21,7 @@ public class AddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
         etAddress = findViewById(R.id.etAddress);
-        btSubmit = findViewById(R.id.btSubmit);
+        btSubmit = findViewById(R.id.btnPickup);
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

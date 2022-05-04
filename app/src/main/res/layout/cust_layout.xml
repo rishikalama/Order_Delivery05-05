@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tvCustListName"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:text="Name"
+        android:textColor="#009688"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCustListId"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="ID" />
+
+    <TextView
+        android:id="@+id/tvCustListVip"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:text="Vip status" />
+
+    <TextView
+        android:id="@+id/tvCustListVer"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Verified" />
+
+    <TextView
+        android:id="@+id/tvCustListBlacklist"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:text="Blacklist" />
+
+    <TextView
+        android:id="@+id/tvCustWarning"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:text="Warning" />
+
+    <TextView
+        android:id="@+id/tvCustBalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Balance" />
+
+    <TextView
+        android:id="@+id/tvCustActivate"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Activate" />
+</LinearLayout>

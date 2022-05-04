@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.order_delivery.customer_activities.MenuActivity;
 import com.example.order_delivery.local_model.CurrentEmployeeInfo;
 import com.example.order_delivery.local_model.CurrentUserInfo;
 import com.example.order_delivery.manager_activities.Manager;

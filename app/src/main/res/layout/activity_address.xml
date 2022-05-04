@@ -23,7 +23,7 @@
         tools:layout_editor_absoluteY="54dp" />
 
     <Button
-        android:id="@+id/btSubmit"
+        android:id="@+id/btnPickup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"

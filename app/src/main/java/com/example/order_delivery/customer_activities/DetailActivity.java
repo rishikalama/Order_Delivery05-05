@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.order_delivery.R;
+import com.example.order_delivery.customer_activities.fragments.CheckoutFragment;
 import com.example.order_delivery.local_model.CartItem;
 import com.example.order_delivery.model.sz_item_cust;
 
@@ -55,11 +56,11 @@ public class DetailActivity extends AppCompatActivity {
         thisItem.setField(itemTest.getItemName(), count, itemTest.getItemImage().getUrl(), Double.parseDouble(itemTest.getItemPrice()));
         //when this is click, update
         if (count > 0){
-            CheckOut.cartItemList.add(thisItem);
+            CheckoutFragment.cartItemList.add(thisItem);
             finish();
         }
         else {
-            Toast.makeText(DetailActivity.this, "Cart size:" + CheckOut.cartItemList.size(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailActivity.this, "Cart size:" + CheckoutFragment.cartItemList.size(), Toast.LENGTH_SHORT).show();
         }
     }
 

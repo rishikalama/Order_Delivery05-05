@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -58,7 +59,7 @@ public class sz_item_custAdapter extends RecyclerView.Adapter<sz_item_custAdapte
         private TextView tvDescription;
         private TextView tvPrice;
         private TextView tvRating;
-        private Button btnComment;
+        private ImageButton ibComment;
         private RelativeLayout itemContainer;
 
         public ViewHolder(@NonNull View itemView) {
@@ -68,10 +69,10 @@ public class sz_item_custAdapter extends RecyclerView.Adapter<sz_item_custAdapte
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvRating = itemView.findViewById(R.id.tvRating);
-            btnComment = itemView.findViewById(R.id.btnItemComment);
+            ibComment = itemView.findViewById(R.id.ibComment);
             itemContainer = itemView.findViewById(R.id.itemContainer);
 
-            btnComment.setOnClickListener(new View.OnClickListener() {
+            ibComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, CommentActivity.class);

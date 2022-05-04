@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer_activities.fragments.CheckoutFragment">
+
+    <Button
+        android:id="@+id/btnDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="onCheckoutClick"
+        android:text="Deliver" />
+
+    <TextView
+        android:id="@+id/tvTotalCost"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="21dp"
+        android:layout_toEndOf="@+id/btnDelivery"
+        android:text="TextView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCheckoutList"
+        android:layout_width="393dp"
+        android:layout_height="477dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/btnPickup"
+        android:layout_width="111dp"
+        android:layout_height="49dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="271dp"
+        android:layout_marginBottom="21dp"
+        android:onClick="onPickUpClick"
+        android:text="Pickup" />
+
+</RelativeLayout>

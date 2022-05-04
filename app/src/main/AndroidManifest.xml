@@ -63,13 +63,10 @@
             android:name=".customer_activities.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".customer_activities.MenuActivity"
+            android:name=".MenuActivity"
             android:exported="false" />
         <activity
             android:name=".customer_activities.AddressActivity"
-            android:exported="false" />
-        <activity
-            android:name=".customer_activities.CheckOut"
             android:exported="false" />
         <activity
             android:name=".customer_activities.DetailActivity"
